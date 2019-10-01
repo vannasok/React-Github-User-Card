@@ -31,16 +31,7 @@ class App extends React.Component {
     axios
       .get('https://api.github.com/users/vannasok/followers')
       .then(res => {
-        console.log('following :', res);
-        for (let x in res.data) {
-          res.data[x].forEach(ele => {
-            const users = ele;
-
-            this.setState({
-              user: users
-            });
-          });
-        }
+        console.log('following :', res.data);
       })
       .catch(err => {
         console.log('Error :', err);
