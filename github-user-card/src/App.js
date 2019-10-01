@@ -24,7 +24,29 @@ class App extends React.Component {
       .catch(err => {
         console.log('error', err);
       });
-  }
+  } //did mount
+
+  fetchFollow = e => {
+    e.preventDefault();
+    axios
+      .get('https://api.github.com/users/vannasok/followers')
+      .then(res => {
+        console.log('following :', res);
+        for (let x in res.data) {
+          res.data[x].forEach(ele => {
+            const users = ele;
+
+            this.setState({
+              user: users
+            });
+          });
+        }
+      })
+      .catch(err => {
+        console.log('Error :', err);
+      });
+  };
+
   render() {
     return (
       <div className='App'>
@@ -50,7 +72,10 @@ class App extends React.Component {
             <a href={this.state.user.html_url}>Github Profile</a>
           </div>
         </div>
-      </div>
+        <div>
+          <button onClick={this.fetchFollow}>See Followings</button>
+        </div>
+      </div> //app
     ); //return
   } //render
 } // close app

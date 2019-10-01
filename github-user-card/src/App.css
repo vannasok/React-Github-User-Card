@@ -49,3 +49,12 @@
   border-radius: 50px;
   color: white;
 }
+
+button {
+  font-size: 2rem;
+  text-decoration: none;
+  background: #09d3ac;
+  padding: 20px 30px;
+  border-radius: 50px;
+  color: white;
+}
