@@ -1,26 +1,58 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import axios from 'axios';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      user: {}
+    };
+  } //constructor
+
+  componentDidMount() {
+    axios
+      .get('https://api.github.com/users/vannasok')
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          user: res.data
+        });
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  }
+  render() {
+    return (
+      <div className='App'>
+        <div className='header'>
+          <h1>Github Users Card</h1>
+        </div>
+        <div className='user-card'>
+          <div className='user-photo'>
+            <img src={this.state.user.avatar_url} alt='' />
+          </div>
+          <div className='user-info'>
+            <p>
+              Username: <b>{this.state.user.name}</b>
+            </p>
+            <p>
+              Email: {this.state.user.email ? this.state.user.email : 'null'}
+            </p>
+            <p>Bio: {this.state.user.bio ? this.state.user.bio : 'null'}</p>
+            <p>
+              Location:{' '}
+              {this.state.user.location ? this.state.user.location : 'null'}
+            </p>
+            <a href={this.state.user.html_url}>Github Profile</a>
+          </div>
+        </div>
+      </div>
+    ); //return
+  } //render
+} // close app
 
 export default App;

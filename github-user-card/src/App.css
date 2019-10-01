@@ -1,4 +1,4 @@
-.App {
+.App h1 {
   text-align: center;
 }
 
@@ -19,4 +19,33 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+.user-card {
+  display: flex;
+  align-content: center;
+  margin: 10px auto;
+  align-content: center;
+  border: 1px solid black;
+  padding: 10px 20px;
+  background: #e6e2d3;
+  border-radius: 10px;
+}
+.user-photo img {
+  width: 70%;
+  margin: 20px 50px;
+  border-radius: 50px;
+}
+
+.user-info {
+  margin: 15px auto;
+  font-size: 2rem;
+  width: 45%;
+}
+.user-info a {
+  text-decoration: none;
+  background: #09d3ac;
+  padding: 20px 30px;
+  border-radius: 50px;
+  color: white;
 }
